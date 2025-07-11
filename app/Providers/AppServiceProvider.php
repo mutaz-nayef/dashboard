@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        app()->setLocale(session('locale', config('app.locale')));
-
 
         Blade::component('layout._default', 'default-layout');
         Blade::component('layout._auth', 'auth-layout');
@@ -36,7 +34,6 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('menusBySection', $menusBySection);
         });
-
 
         View::composer('/layout/partials/header', function ($view) {
             $menus = Menu::with('children')->whereNull('parent_id')->get();

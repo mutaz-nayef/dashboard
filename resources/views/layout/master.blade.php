@@ -11,12 +11,12 @@ Dribbble: www.dribbble.com/keenthemes
 Like: www.facebook.com/keenthemes
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <!--begin::Head-->
 
 <head>
     <base href="" />
-    <title>Metronic - The World's #1 Selling Bootstrap Admin Template by Keenthemes</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <meta charset="utf-8" />
     <meta name="description"
         content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
@@ -41,8 +41,15 @@ License: For each use you must have a valid license purchased only from above li
         type="text/css" />
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="{{asset('admin')}}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin')}}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    @if(app()->getLocale() == 'ar')
+    <link href="{{ asset('admin') }}/assets/plugins/custom/prismjs/prismjs.bundle.rtl.css" rel="stylesheet" />
+    <link href="{{ asset('admin') }}/assets/plugins/global/plugins.bundle.rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin') }}/assets/css/style.bundle.rtl.css" rel="stylesheet" type="text/css" />
+
+    @else
+    <link href="{{ asset('admin') }}/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin') }}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    @endif
     <!--end::Global Stylesheets Bundle-->
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
@@ -5052,6 +5059,25 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{asset('admin')}}/assets/js/custom/utilities/modals/new-target.js"></script>
     <script src="{{asset('admin')}}/assets/js/custom/utilities/modals/users-search.js"></script>
     <!--end::Custom Javascript-->
+
+    {{-- RTL Fix Script --}}
+    @if(app()->getLocale() == 'ar')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('[data-kt-menu-placement]').forEach(function (el) {
+                    let val = el.getAttribute('data-kt-menu-placement');
+                    if (val === 'bottom-start') {
+                        el.setAttribute('data-kt-menu-placement', 'bottom-end');
+                    }
+                    if (val === 'right-start') {
+                        el.setAttribute('data-kt-menu-placement', 'left-start');
+                    }
+                });
+            });
+    </script>
+    @endif
+    @stack('scripts')
+
     <!--end::Javascript-->
 </body>
 <!--end::Body-->

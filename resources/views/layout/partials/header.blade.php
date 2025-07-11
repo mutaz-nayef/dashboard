@@ -1918,51 +1918,19 @@
                             <!--begin::Menu sub-->
                             <div class="menu-sub menu-sub-dropdown w-175px py-4">
                                 <!--begin::Menu item-->
+                                @foreach (config('app.locales') as $locale)
                                 <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html"
-                                        class="menu-link d-flex px-5 active">
+                                    <a href="{{ url(getCurrentUrlWithLocale($locale)) }}"
+                                        class="menu-link d-flex px-5 @if(app()->getLocale() === $locale) active @endif">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
-                                                src="{{ asset('admin') }}/assets/media/flags/united-states.svg"
+                                                src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
                                                 alt="" />
-                                        </span>English</a>
+                                        </span>{{ $locale }}
+                                    </a>
                                 </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin') }}/assets/media/flags/spain.svg" alt="" />
-                                        </span>Spanish</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin') }}/assets/media/flags/germany.svg" alt="" />
-                                        </span>German</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin') }}/assets/media/flags/japan.svg" alt="" />
-                                        </span>Japanese</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-                                        <span class="symbol symbol-20px me-4">
-                                            <img class="rounded-1"
-                                                src="{{ asset('admin') }}/assets/media/flags/france.svg" alt="" />
-                                        </span>French</a>
-                                </div>
+                                @endforeach
+
                                 <!--end::Menu item-->
                             </div>
                             <!--end::Menu sub-->

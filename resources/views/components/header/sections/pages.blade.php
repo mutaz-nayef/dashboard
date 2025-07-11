@@ -105,7 +105,7 @@ return in_array($menu->slug, ['authentication', 'account', 'widgets']);
                                 <div class="menu-item p-0 m-0">
                                     <!--begin:Menu link-->
                                     <a href="{{$child->url}}" class="menu-link">
-                                        <span class="menu-title">{{$menu->title}}</span>
+                                        <span class="menu-title">{{$child->title}}</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>

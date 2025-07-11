@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class SetLanguage
@@ -15,6 +17,17 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        $locale = $request->segment(1);
+
+        if (!in_array($locale, config('app.locales'))) {
+
+            abort(404, 'locale not supported');
+            return redirect(url(getCurrentUrlWithLocale(config('app.fallback_locale'))));
+        }
+        App::setLocale($locale);
+        session(['locale' => $locale]);
+
         return $next($request);
     }
 }
