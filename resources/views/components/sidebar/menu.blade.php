@@ -1,72 +1,47 @@
-@props(['menu'])
-<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+@props(['menu', 'visibleCount' => 4])
+
+@php
+$children = $menu->children;
+$childCount = $children->count();
+@endphp
+
+<div @class([ 'menu-item' , 'menu-accordion'=> $childCount,
+    ]) data-kt-menu-trigger="{{ $childCount ? 'click' : '' }}">
     <!--begin:Menu link-->
+    @if ($menu->url && $childCount === 0)
+
+    <x-sidebar.item :item="$menu" />
+    @else
     <span class="menu-link">
         <span class="menu-icon">
-            {!! $menu->icon_html !!}
+            @if ($menu->icon)
+            <i class="fa-solid fa-{{ $menu->icon }} fs-3"></i>
+            @else
+            <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+            @endif
         </span>
         <span class="menu-title">{{ $menu->title }}</span>
-        @if ($menu->children->isNotEmpty())
+        @if ($childCount)
         <span class="menu-arrow"></span>
         @endif
     </span>
+    @endif
     <!--end:Menu link-->
-
-    @if ($menu->children->isNotEmpty())
+    @if ($childCount)
     <!--begin:Menu sub-->
-    <div class="menu-sub menu-sub-accordion ">
-        @php
-        $visibleCount = 4;
-        $childCount = $menu->children->count();
-        $children = $menu->children;
-        @endphp
-
-        {{-- Show first 4 children --}}
+    <div class="menu-sub menu-sub-accordion">
         @foreach ($children->take($visibleCount) as $child)
-        @if ($child->children->isNotEmpty())
-        <!-- Menu item with sub-children -->
-        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-            <span class="menu-link">
-                <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                <span class="menu-title">{{ $child->title }}</span>
-                <span class="menu-arrow"></span>
-            </span>
-            <div class="menu-sub menu-sub-accordion">
-                @foreach ($child->children as $subChild)
-                <x-sidebar.item :item="$subChild" />
-                @endforeach
-            </div>
-        </div>
-        @else
-        <!-- Menu item without sub-children -->
-        <x-sidebar.item :item="$child" />
-        @endif
+        <x-sidebar.menu :menu="$child" :visibleCount="$visibleCount" />
         @endforeach
 
-        {{-- Hidden collapsed children --}}
         @if ($childCount > $visibleCount)
         <div class="collapse" id="menu_collapse_{{ $menu->id }}">
             @foreach ($children->slice($visibleCount) as $child)
-            @if ($child->children->isNotEmpty())
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                <span class="menu-link">
-                    <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
-                    <span class="menu-title">{{ $child->title }}</span>
-                    <span class="menu-arrow"></span>
-                </span>
-                <div class="menu-sub menu-sub-accordion">
-                    @foreach ($child->children as $subChild)
-                    <x-sidebar.item :item="$subChild" />
-                    @endforeach
-                </div>
-            </div>
-            @else
-            <x-sidebar.item :item="$child" />
-            @endif
+            <x-sidebar.menu :menu="$child" :visibleCount="$visibleCount" />
             @endforeach
         </div>
 
-        <!-- Show More / Show Less Button -->
+        <!-- Show More Button -->
         <div class="menu-item">
             <div class="menu-content">
                 <a class="btn btn-flex btn-color-primary d-flex flex-stack fs-base p-0 ms-2 mb-2 toggle collapsible collapsed"

@@ -19,17 +19,22 @@
                     <!--begin::Menu-->
                     <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6"
                         id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
-                        @foreach ($menusBySection as $section => $menus)
-                        @if($menus[0]->section)
-                        <x-sidebar.section :section="$section" />
-                        @endif
-                        @foreach ($menus as $menu)
+
+                        @foreach ($menus as $index => $menu)
                         @if($menu->slug === 'corporate')
                         <x-sidebar.hover-menu :menu="$menu" />
                         @else
+                        @if($index === 1)
+                        <div class="menu-item pt-5">
+                            <!--begin:Menu content-->
+                            <div class="menu-content"><span
+                                    class="menu-heading fw-bold text-uppercase fs-7">Pages</span>
+                            </div>
+                            <!--end:Menu content-->
+                        </div>
+                        @endif
                         <x-sidebar.menu :menu="$menu" />
                         @endif
-                        @endforeach
                         @endforeach
                     </div>
                 </div>

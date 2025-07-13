@@ -7,19 +7,15 @@
     <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
         <!--begin::Header-->
         @include('/layout/partials/header')
-        <!--end::Header-->
-        <!--begin::Wrapper-->
         @include('/layout/partials/sidebar')
         <!--end::Sidebar-->
-
         <!--begin::Main-->
         <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
             <!--begin::Content wrapper-->
             <div class="d-flex flex-column flex-column-fluid">
 
-                <!--begin::Toolbar-->
 
-                @include('/layout/partials/_toolbar')
+                @include('/layout/partials/_toolbar')'
                 <!--end::Toolbar-->
                 <!--begin::Content-->
                 <div id="kt_app_content" class="app-content flex-column-fluid">

@@ -35,21 +35,38 @@
                     id="kt_app_header_menu" data-kt-menu="true">
                     <!--begin:Menu item-->
 
-                    @foreach ($menusBySection as $section => $menus)
                     {{-- add these to classes to make it active : here show --}}
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
                         class="menu-item  menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                         <!--begin:Menu link-->
                         <span class="menu-link">
-                            <span class="menu-title text-capitalize">{{$section}}</span>
+                            <span class="menu-title text-capitalize">Dashboards</span>
                             <span class="menu-arrow d-lg-none"></span>
                         </span>
                         <!--end:Menu link-->
-
-                        @includeIf("components.header.sections.$section", ['menus' => $menus])
+                        @include("components.header.sections.dashboards", ['menu' => $menu])
                     </div>
-                    @endforeach
+                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
+                        class="menu-item  menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-title text-capitalize">Pages</span>
+                            <span class="menu-arrow d-lg-none"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        @include("components.header.sections.pages", ['menus' => $menus])
+                    </div>
 
+                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
+                        class="menu-item  menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                            <span class="menu-title text-capitalize">Apps</span>
+                            <span class="menu-arrow d-lg-none"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        @include("components.header.sections.apps", ['menus' => $menus])
+                    </div>
 
                     <!--end:Menu item-->
                 </div>
@@ -1920,13 +1937,13 @@
                                 <!--begin::Menu item-->
                                 @foreach (config('app.locales') as $locale)
                                 <div class="menu-item px-3">
-                                    <a href="{{ url(getCurrentUrlWithLocale($locale)) }}"
+                                    <a href="{{ route('set-lang', $locale) }}"
                                         class="menu-link d-flex px-5 @if(app()->getLocale() === $locale) active @endif">
                                         <span class="symbol symbol-20px me-4">
                                             <img class="rounded-1"
                                                 src="{{ asset('admin/assets/media/flags/united-states.svg') }}"
                                                 alt="" />
-                                        </span>{{ $locale }}
+                                        </span>{{ strtoupper($locale) }}
                                     </a>
                                 </div>
                                 @endforeach

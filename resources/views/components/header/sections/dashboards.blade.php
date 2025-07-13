@@ -1,22 +1,19 @@
+@php
+$remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : 0; // the rest after first 6
+@endphp
 <!--begin:Menu sub-->
-<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-850px">
+<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 " style="width: fit-content">
     <!--begin:Dashboards menu-->
     <div class="menu-state-bg menu-extended overflow-hidden overflow-lg-visible" data-kt-menu-dismiss="true">
         <!--begin:Row-->
         <div class="row">
             <!--begin:Col-->
-            <div class="col-lg-8 mb-3 mb-lg-0 py-3 px-3 py-lg-6 px-lg-6">
+            <div class="col-lg-8 mb-3 mb-lg-0 py-3 px-3 py-lg-6 px-lg-6" style="{{$remaining > 0 ? '' : 'width:100%'}}">
                 <!--begin:Row-->
                 <div class="row">
                     <!--begin:Col-->
-                    @foreach ($menus as $menu)
 
-                    @php
-                    $children = $menu->children;
-                    $firstSix = $children->take(6);
-                    $remaining = $children->slice(6); // the rest after first 6
-                    @endphp
-                    @foreach ($firstSix as $child)
+                    @foreach ($menu->children->take(6) as $child)
                     <div class="col-lg-6 mb-3">
                         <!--begin:Menu item-->
                         <div class="menu-item p-0 m-0">
@@ -41,7 +38,6 @@
                         <!--end:Menu item-->
                     </div>
                     @endforeach
-                    @endforeach
                     <!--end:Col-->
 
                 </div>
@@ -60,6 +56,7 @@
             </div>
             <!--end:Col-->
             <!--begin:Col-->
+            @if($remaining > 0)
             <div class="menu-more bg-light col-lg-4 py-3 px-3 py-lg-6 px-lg-6 rounded-end">
                 <!--begin:Heading-->
                 <h4 class="fs-6 fs-lg-4 text-gray-800 fw-bold mt-3 mb-3 ms-4">More Dashboards
@@ -72,11 +69,14 @@
                     <a href="{{$child->url}}" class="menu-link py-2">
                         <span class="menu-title">{{$child->title}}</span>
                     </a>
-                    <!--end:Menu link-->
+                    {{--
+                    <!--end:Menu link--> --}}
                 </div>
-                <!--end:Menu item-->
+                {{--
+                <!--end:Menu item--> --}}
                 @endforeach
             </div>
+            @endif
             <!--end:Col-->
         </div>
         <!--end:Row-->

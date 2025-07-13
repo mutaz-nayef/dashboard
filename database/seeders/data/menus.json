@@ -1,0 +1,222 @@
+[
+    {
+        "title": "Dashboard",
+        "slug": "dashboard",
+        "icon": "house",
+        "url": null,
+        "children": [
+            {
+                "title": "Home",
+                "slug": "home",
+                "url": "/dashboards/home"
+            }
+        ]
+    },
+    {
+        "title": "User Profile",
+        "slug": "user-profile",
+        "icon": "house-user",
+        "children": [
+            {
+                "title": "Overview",
+                "slug": "user-profile-overview",
+                "url": "/users/user-profile"
+            },
+            {
+                "title": "Activity",
+                "slug": "user-profile-activity",
+                "url": "users/user-profile/activity"
+            }
+        ]
+    },
+    {
+        "title": "Account",
+        "slug": "account",
+        "icon": "id-badge",
+        "children": [
+            {
+                "title": "Overview",
+                "slug": "account-overview",
+                "url": "/users/account"
+            },
+            {
+                "title": "Settings",
+                "slug": "account-settings",
+                "url": "users/account-settings"
+            },
+            {
+                "title": "Activity",
+                "slug": "account-activity",
+                "url": "users/account/activity"
+            }
+        ]
+    },
+    {
+        "title": "Authentication",
+        "slug": "authentication",
+        "icon": "fingerprint",
+        "children": [
+            {
+                "title": "Basic",
+                "slug": "basic",
+                "children": [
+                    { "title": "Login", "slug": "login", "url": "/login" },
+                    {
+                        "title": "Register",
+                        "slug": "register",
+                        "url": "/register"
+                    },
+                    {
+                        "title": "Two-Factor",
+                        "slug": "two-factor",
+                        "url": "/two-factor"
+                    },
+                    {
+                        "title": "Reset Password",
+                        "slug": "reset-password",
+                        "url": "/reset-password"
+                    },
+                    {
+                        "title": "New Password",
+                        "slug": "new-password",
+                        "url": "/new-password"
+                    }
+                ]
+            },
+            {
+                "title": "Email",
+                "slug": "email",
+                "children": [
+                    {
+                        "title": "Welcome Message",
+                        "slug": "email-welcome-message",
+                        "url": "/email/welcome-message"
+                    },
+                    {
+                        "title": "Reset Password",
+                        "slug": "email-reset-password",
+                        "url": "/email/reset-password"
+                    },
+                    {
+                        "title": "Subscription Confirmed",
+                        "slug": "subscription-confirmed",
+                        "url": "/email/subscription-confirmed"
+                    },
+                    {
+                        "title": "Credit Card Declined",
+                        "slug": "credit-card-declined",
+                        "url": "/email/credit-card-declined"
+                    }
+                ]
+            },
+            {
+                "title": "Multi-steps Sign-up",
+                "slug": "multi-steps-sign-up",
+                "url": "/multi-steps-sign-up"
+            },
+            {
+                "title": "Welcome Message",
+                "slug": "welcome-message",
+                "url": "/welcome-message"
+            },
+            {
+                "title": "Verify Email",
+                "slug": "verify-email",
+                "url": "/verify-email"
+            },
+            {
+                "title": "Password Confirmation",
+                "slug": "password-confirmation",
+                "url": "/password-confirmation"
+            },
+            {
+                "title": "Account Deactivation",
+                "slug": "account-deactivation",
+                "url": "/account-deactivation"
+            }
+        ]
+    },
+    {
+        "title": "Corporate",
+        "slug": "corporate",
+        "icon": "note-sticky",
+        "children": [
+            {
+                "title": "About",
+                "slug": "about",
+                "url": "/about"
+            },
+            {
+                "title": "Our Team",
+                "slug": "our-team",
+                "url": "/our-team"
+            },
+            {
+                "title": "Contact Us",
+                "slug": "contact-us",
+                "url": "/contact-us"
+            }
+        ]
+    },
+    {
+        "title": "FAQ",
+        "slug": "faq",
+        "icon": "clipboard-question",
+        "children": [
+            {
+                "title": "FAQ Classic",
+                "slug": "faq-classic",
+                "url": "/faq/classic"
+            },
+            {
+                "title": "FAQ Extended",
+                "slug": "faq-extended",
+                "url": "/faq/extended"
+            }
+        ]
+    },
+    {
+        "title": "User Management",
+        "slug": "user-management",
+        "icon": "users-gear",
+        "children": [
+            {
+                "title": "Users",
+                "slug": "user-management-users",
+                "children": [
+                    {
+                        "title": "Users List",
+                        "slug": "user-management-users-list",
+                        "url": "/user-management/users"
+                    },
+                    {
+                        "title": "View User",
+                        "slug": "user-management-users-view",
+                        "url": "/user-management/users/{user}"
+                    }
+                ]
+            },
+            {
+                "title": "Roles",
+                "slug": "user-management-roles",
+                "children": [
+                    {
+                        "title": "Roles List",
+                        "slug": "user-management-roles-list",
+                        "url": "user-management/roles"
+                    },
+                    {
+                        "title": "View Role",
+                        "slug": "user-management-roles-view",
+                        "url": "/user-management/roles/{role}"
+                    }
+                ]
+            },
+            {
+                "title": "Permissions",
+                "slug": "/user-management-permissions",
+                "url": "/user-management/permissions"
+            }
+        ]
+    }
+]

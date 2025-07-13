@@ -10,18 +10,13 @@ class Menu extends Model
     /** @use HasFactory<\Database\Factories\MenuFactory> */
     use HasFactory;
 
-    protected $fillable = ['section', 'title', 'slug', 'icon_html', 'url', 'permission', 'parent_id'];
+    protected $fillable = ['section', 'title', 'slug', 'icon', 'url', 'permission', 'isActive', 'parent_id'];
 
 
     // Children (submenus)
     public function children()
     {
         return $this->hasMany(Menu::class, 'parent_id')->with('children');
-    }
-
-    public function childrenRecursive()
-    {
-        return $this->children()->with('childrenRecursive');
     }
 
     // Parent
@@ -36,8 +31,8 @@ class Menu extends Model
         return !$this->permission_name || $user->can($this->permission_name);
     }
 
-    public function getIconHtmlAttribute($value)
-    {
-        return $value ?: '<span class="menu-bullet"><span class="bullet bullet-dot"></span></span>';
-    }
+    // public function getIconAttribute($value)
+    // {
+    // return $value ?: '<span class="menu-bullet"><span class="bullet bullet-dot"></span></span>';
+    // }
 }

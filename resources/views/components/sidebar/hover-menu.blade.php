@@ -5,7 +5,8 @@
     <!--begin:Menu link-->
     <span class="menu-link">
         <span class="menu-icon">
-            {!! $menu->icon_html !!} </span>
+            <i class="fa-solid fa-{{$menu->icon}} fs-3"></i>
+        </span>
         <span class="menu-title">{{$menu->title}}</span>
         <span class="menu-arrow"></span>
     </span>

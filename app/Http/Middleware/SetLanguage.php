@@ -17,16 +17,11 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next): Response
     {
+        $locale = Session::get('locale');
 
-        $locale = $request->segment(1);
-
-        if (!in_array($locale, config('app.locales'))) {
-
-            abort(404, 'locale not supported');
-            return redirect(url(getCurrentUrlWithLocale(config('app.fallback_locale'))));
+        if (!in_array($locale, ['en', 'ar', 'fr'])) {
+            // dump('hello');
         }
-        App::setLocale($locale);
-        session(['locale' => $locale]);
 
         return $next($request);
     }

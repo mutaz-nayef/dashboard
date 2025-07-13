@@ -13,14 +13,13 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('section')->nullable(); // e.g., "Dashboards", "Apps"
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('icon_html')->nullable();
+            $table->string('icon')->nullable();
             $table->string('url')->unique()->nullable();
             $table->string('permission')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('menus')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('menus')->onDelete('cascade');
+            $table->boolean('isActive')->default(true);
             $table->timestamps();
         });
     }

@@ -3,8 +3,8 @@
 @if($item->url)
 <div class="menu-item">
     <a class="menu-link" href="{{ $item->url }}">
-        @if(!empty($item->icon_html))
-        <span class="menu-icon">{!! $item->icon_html !!}</span>
+        @if(!empty($item->icon))
+        <i class="fa-solid fa-{{ $item->icon }} fs-3"></i>
         @endif
         <span class="menu-title">{{ $item->title }}</span>
     </a>
