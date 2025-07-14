@@ -22,7 +22,7 @@
 
                         @foreach ($menus as $index => $menu)
                         @if($menu->slug === 'corporate')
-                        <x-sidebar.hover-menu :menu="$menu" />
+                        <x-menus.hover-menu :menu="$menu" />
                         @else
                         @if($index === 1)
                         <div class="menu-item pt-5">

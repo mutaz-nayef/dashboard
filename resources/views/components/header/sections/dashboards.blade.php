@@ -1,5 +1,6 @@
 @php
-$remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : 0; // the rest after first 6
+$remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : collect(); // the rest after first
+
 @endphp
 <!--begin:Menu sub-->
 <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 " style="width: fit-content">
@@ -8,7 +9,8 @@ $remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : 0; // th
         <!--begin:Row-->
         <div class="row">
             <!--begin:Col-->
-            <div class="col-lg-8 mb-3 mb-lg-0 py-3 px-3 py-lg-6 px-lg-6" style="{{$remaining > 0 ? '' : 'width:100%'}}">
+            <div class="col-lg-8 mb-3 mb-lg-0 py-3 px-3 py-lg-6 px-lg-6"
+                style="{{$remaining->isNotEmpty() ? '' : 'width:100%'}}">
                 <!--begin:Row-->
                 <div class="row">
                     <!--begin:Col-->
@@ -56,7 +58,7 @@ $remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : 0; // th
             </div>
             <!--end:Col-->
             <!--begin:Col-->
-            @if($remaining > 0)
+            @if($remaining->isNotEmpty())
             <div class="menu-more bg-light col-lg-4 py-3 px-3 py-lg-6 px-lg-6 rounded-end">
                 <!--begin:Heading-->
                 <h4 class="fs-6 fs-lg-4 text-gray-800 fw-bold mt-3 mb-3 ms-4">More Dashboards
@@ -64,16 +66,7 @@ $remaining = $menu->children->count() > 6 ? $menu->children->slice(6) : 0; // th
                 <!--end:Heading-->
                 <!--begin:Menu item-->
                 @foreach ($remaining as $child)
-                <div class="menu-item p-0 m-0">
-                    <!--begin:Menu link-->
-                    <a href="{{$child->url}}" class="menu-link py-2">
-                        <span class="menu-title">{{$child->title}}</span>
-                    </a>
-                    {{--
-                    <!--end:Menu link--> --}}
-                </div>
-                {{--
-                <!--end:Menu item--> --}}
+                <x-menus.menu-item :menu="$child" />
                 @endforeach
             </div>
             @endif

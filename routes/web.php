@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\SetLanguage;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+
 
 
 Route::get('/', function () {
@@ -37,30 +40,20 @@ Route::get('/two-factor', function () {
 
 Route::prefix('/users/user-profile')->group(
     function () {
-
-        Route::get('/overview', function () {
-            return view('pages.user-profile.overview');
-        })->name('user-profile-overview');
+        Route::get('/', [UserController::class, 'overview'])->name('user-profile');
     }
 );
 
-Route::get('/set-lang/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'ar'])) {
+
+
+Route::get('set-locale/{locale}', function ($locale) {
+    if (in_array($locale, config('app.locales'))) {
         session(['locale' => $locale]);
     }
-
     return redirect()->back();
-})->name('set-lang');
+})->name('set-locale');
 
 
-Route::get('/debug-locale', function () {
-    return [
-        'session_locale' => session('locale'),
-        'app_locale' => app()->getLocale(),
-        'fallback_locale' => config('app.fallback_locale'),
-        'current_url' => url()->current(),
-    ];
-});
 Route::get('/error', function () {
     abort(500);
 });

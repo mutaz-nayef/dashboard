@@ -9,8 +9,7 @@ $childCount = $children->count();
     ]) data-kt-menu-trigger="{{ $childCount ? 'click' : '' }}">
     <!--begin:Menu link-->
     @if ($menu->url && $childCount === 0)
-
-    <x-sidebar.item :item="$menu" />
+    <x-menus.menu-item :menu="$menu" />
     @else
     <span class="menu-link">
         <span class="menu-icon">
