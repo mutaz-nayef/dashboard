@@ -26,7 +26,7 @@
         </x-buttons.modal-button>
         <!--end::Primary button-->
 
-        <x-buttons.button type="secondary" href="/users">Test</x-buttons.button>
+        <x-buttons.button class="btn-sm" type="secondary" href="/users">Test</x-buttons.button>
     </div>
     @endsection
 

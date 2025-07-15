@@ -37,11 +37,7 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
-    <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="{{asset('admin')}}/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{asset('admin')}}/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet"
-        type="text/css" />
+
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     @if(app()->getLocale() == 'ar')
@@ -54,6 +50,7 @@ License: For each use you must have a valid license purchased only from above li
     <link href="{{ asset('admin') }}/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     @endif
     <!--end::Global Stylesheets Bundle-->
+    @stack('styles')
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
     </script>
@@ -76,10 +73,10 @@ License: For each use you must have a valid license purchased only from above li
     <!--begin::Drawers-->
     <!--begin::Activities drawer-->
 
-    @include('components.header.activities.drawer')
+    {{-- @include('components.header.activities.drawer') --}}
     <!--end::Activities drawer-->
     <!--begin::Chat drawer-->
-    @include('components.header.chat.drawer')
+    {{-- @include('components.header.chat.drawer') --}}
     <!--end::Chat drawer-->
 
     {{--
@@ -3996,7 +3993,6 @@ License: For each use you must have a valid license purchased only from above li
     <script src="{{asset('admin')}}/assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="{{asset('admin')}}/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -4008,7 +4004,6 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
-    <script src="{{asset('admin')}}/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
     <script src="{{asset('admin')}}/assets/js/widgets.bundle.js"></script>

@@ -11,14 +11,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.user-management.users.index');
     }
 
 
-    public function overview()
-    {
-        return view('pages.user-profile.overview');
-    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -40,7 +37,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('pages.user-management.users.show');
     }
 
     /**

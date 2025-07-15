@@ -12,45 +12,30 @@
             }
         ]
     },
-    {
-        "title": "User Profile",
-        "slug": "user-profile",
-        "icon": "house-user",
-        "children": [
-            {
-                "title": "Overview",
-                "slug": "user-profile-overview",
-                "url": "/users/user-profile"
-            },
-            {
-                "title": "Activity",
-                "slug": "user-profile-activity",
-                "url": "users/user-profile/activity"
-            }
-        ]
-    },
+
     {
         "title": "Account",
         "slug": "account",
         "icon": "id-badge",
         "children": [
             {
-                "title": "Overview",
-                "slug": "account-overview",
-                "url": "/users/account"
+                "title": "Profile Overview",
+                "slug": "profile-overview",
+                "url": "/profile/"
             },
             {
-                "title": "Settings",
+                "title": "Account Settings",
                 "slug": "account-settings",
-                "url": "users/account-settings"
+                "url": "/account/edit"
             },
             {
                 "title": "Activity",
                 "slug": "account-activity",
-                "url": "users/account/activity"
+                "url": "/account/activity"
             }
         ]
     },
+
     {
         "title": "Authentication",
         "slug": "authentication",
@@ -65,11 +50,6 @@
                         "title": "Register",
                         "slug": "register",
                         "url": "/register"
-                    },
-                    {
-                        "title": "Two-Factor",
-                        "slug": "two-factor",
-                        "url": "/two-factor"
                     },
                     {
                         "title": "Reset Password",
@@ -96,23 +76,8 @@
                         "title": "Reset Password",
                         "slug": "email-reset-password",
                         "url": "/email/reset-password"
-                    },
-                    {
-                        "title": "Subscription Confirmed",
-                        "slug": "subscription-confirmed",
-                        "url": "/email/subscription-confirmed"
-                    },
-                    {
-                        "title": "Credit Card Declined",
-                        "slug": "credit-card-declined",
-                        "url": "/email/credit-card-declined"
                     }
                 ]
-            },
-            {
-                "title": "Multi-steps Sign-up",
-                "slug": "multi-steps-sign-up",
-                "url": "/multi-steps-sign-up"
             },
             {
                 "title": "Welcome Message",
@@ -130,9 +95,9 @@
                 "url": "/password-confirmation"
             },
             {
-                "title": "Account Deactivation",
-                "slug": "account-deactivation",
-                "url": "/account-deactivation"
+                "title": "Account Deletion",
+                "slug": "account-deletion",
+                "url": "/account-deletion"
             }
         ]
     },

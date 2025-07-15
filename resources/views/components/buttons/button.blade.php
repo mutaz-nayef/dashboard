@@ -6,7 +6,7 @@
 ])
 
 @php
-$classes = "btn btn-$size fw-bold btn-$type";
+$classes = "btn px-6 align-self-center text-nowrap fw-bold btn-$type";
 @endphp
 
 

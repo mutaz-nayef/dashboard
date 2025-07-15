@@ -10,7 +10,7 @@ return $menu->children->isNotEmpty() && $menu->children->every(fn ($child) => $c
             <!--begin:Left Column-->
             <div class="col-lg-7">
                 <div class="row">
-                    @foreach ($menus as $menu)
+                    @foreach ($menus->take(3) as $menu)
                     <div class="col-lg-4 mb-3">
                         <x-menus.menu-item :menu="$menu" />
                     </div>
